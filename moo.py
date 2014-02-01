@@ -20,29 +20,28 @@ db = client.mootip
 goat = AuthServiceProxy("http://user:pass@127.0.0.1:22555")
 
 def loop():
-    now = t.time()
+    while True:
+        now = t.time()
 
-    if now >= config['expires']:
-        refresh()
+        if now >= config['expires']:
+            refresh()
 
-    try:
-        notifications()
-    except:
-        print('An exception occurred.')
+        try:
+            notifications()
+        except:
+            print('An exception occurred.')
 
-    try:
-        notifications()
-    except:
-        print('An exception occurred.')
+        try:
+            notifications()
+        except:
+            print('An exception occurred.')
 
-    try:
-        conversations()
-    except:
-        print('An exception occurred.')
+        try:
+            conversations()
+        except:
+            print('An exception occurred.')
 
-    t.sleep(30)
-
-    loop()
+        t.sleep(30)
 
 def refresh():
     print("Refreshing token. (" + str(t.time()) + ')')
